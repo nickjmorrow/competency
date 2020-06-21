@@ -6,7 +6,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "target": "ESNext",
+        "target": "es2018",
         "allowJs": true,
         "checkJs": false,
         "jsx": "react",

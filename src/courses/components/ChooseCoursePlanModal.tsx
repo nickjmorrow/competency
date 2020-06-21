@@ -19,6 +19,8 @@ export const ChooseCoursePlanModal: React.FC<{
             right: 'auto',
             bottom: 'auto',
             marginRight: '-50%',
+            padding: '48px',
+            minWidth: '280px',
             transform: 'translate(-50%, -50%)',
         },
     };

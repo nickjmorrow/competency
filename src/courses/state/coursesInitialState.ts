@@ -3,12 +3,24 @@ import { CoursesState } from '~/courses/types/CoursesState';
 export const coursesInitialState: CoursesState = {
     courses: [
         {
-            studentIds: [],
+            studentIds: [1, 2, 3],
             coursePlanId: null,
             coursePeriodId: 1,
             instructorId: 1,
             name: 'Pre-Calculus',
             courseId: 1,
+            schedule: 'M/W/F 3-4',
+            studentProjects: [{ studentId: 2, projectId: 1, result: 'satisfactory' }],
+        },
+        {
+            studentIds: [4, 5],
+            coursePlanId: null,
+            coursePeriodId: 1,
+            instructorId: 1,
+            name: 'Pre-Calculus',
+            courseId: 2,
+            schedule: 'M/W/F 4-5',
+            studentProjects: [],
         },
     ],
     coursePeriods: [
@@ -52,18 +64,18 @@ export const coursesInitialState: CoursesState = {
                     description: 'Students should be able to...',
                     projects: [
                         {
-                            projectId: 1,
-                            title: 'Project 1',
+                            projectId: 4,
+                            title: 'Project 4',
                             description: 'For this project, students will ...',
                         },
                         {
-                            projectId: 2,
-                            title: 'Project 2',
+                            projectId: 5,
+                            title: 'Project 5',
                             description: 'For this project, students will ...',
                         },
                         {
-                            projectId: 3,
-                            title: 'Project 3',
+                            projectId: 6,
+                            title: 'Project 6',
                             description: 'For this project, students will ...',
                         },
                     ],
@@ -74,18 +86,18 @@ export const coursesInitialState: CoursesState = {
                     description: 'Students should be able to...',
                     projects: [
                         {
-                            projectId: 1,
-                            title: 'Project 1',
+                            projectId: 7,
+                            title: 'Project 7',
                             description: 'For this project, students will ...',
                         },
                         {
-                            projectId: 2,
-                            title: 'Project 2',
+                            projectId: 8,
+                            title: 'Project 8',
                             description: 'For this project, students will ...',
                         },
                         {
-                            projectId: 3,
-                            title: 'Project 3',
+                            projectId: 9,
+                            title: 'Project 9',
                             description: 'For this project, students will ...',
                         },
                     ],

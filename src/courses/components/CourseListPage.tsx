@@ -11,20 +11,34 @@ export const CourseListPage: React.FC = () => {
     const courses = useSelector(coursesSelectors.getCourses);
     return (
         <Container>
-            {courses.map(c => (
-                <CourseButtonBar key={c.courseId} course={c} />
-            ))}
+            <Typography variant={'h2'}>Courses</Typography>
+            <CoursesContainer>
+                {courses.map(c => (
+                    <CourseButtonBar key={c.courseId} course={c} />
+                ))}
+            </CoursesContainer>
         </Container>
     );
 };
 
 const Container = styled.div``;
 
+const CoursesContainer = styled.div`
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 24px;
+`;
+
 const CourseButtonBar: React.FC<{ course: Course }> = ({ course }) => {
+    const coursePeriod = useSelector(coursesSelectors.getByCoursePeriodId(course.coursePeriodId));
     return (
         <Link route={`/courses/${course.courseId}`}>
             <ButtonBar>
                 <Typography colorVariant={'inherit'}>{course.name}</Typography>
+                <div>
+                    <Typography colorVariant={'inherit'}>{course.schedule}</Typography>
+                    <Typography colorVariant={'inherit'}>{` | ${coursePeriod.label}`}</Typography>
+                </div>
             </ButtonBar>
         </Link>
     );
