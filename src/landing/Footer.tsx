@@ -11,6 +11,8 @@ export const Footer: React.FC = () => {
 };
 
 const StyledFooter = styled.footer`
-    height: 32px;
-    padding: 0 32px;
+    height: 48px;
+    padding: 0 64px;
+    display: flex;
+    align-items: center;
 `;

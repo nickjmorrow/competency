@@ -23,6 +23,7 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'react/prop-types': 'off',
         'prettier/prettier': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
     },
     ignorePatterns: ['webpack.*.js', 'cypress/integration/examples'],
 };

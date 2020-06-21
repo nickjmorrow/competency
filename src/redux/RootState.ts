@@ -1,5 +1,3 @@
-import { TodosState } from '~/todos/types/TodosState';
+import { rootReducer } from '~/redux/rootReducer';
 
-export interface RootState {
-    todosState: TodosState;
-}
+export type RootState = ReturnType<typeof rootReducer>;
