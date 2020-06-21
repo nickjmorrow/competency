@@ -5,18 +5,14 @@ import { CoursePlanPage } from '~/courses/components/CoursePlanPage';
 import { CourseListPage } from '~/courses/components/CourseListPage';
 import { CoursePage } from '~/courses/components/CoursePage';
 import { StudentCourseInfo } from '~/courses/components/StudentCourseInfo';
+import { StudentListPage } from '~/students/components/StudentListPage';
+import { StudentPage } from '~/students/components/StudentPage';
 
 export const componentRouteMappings = [
     {
         component: Home,
         route: '/',
         label: 'Home',
-        isVisible: true,
-    },
-    {
-        component: TodosPage,
-        route: '/todos',
-        label: 'Todos',
         isVisible: true,
     },
     {
@@ -44,6 +40,17 @@ export const componentRouteMappings = [
     {
         component: StudentCourseInfo,
         route: '/courses/:courseId/students/:studentId',
+        isVisible: false,
+    },
+    {
+        component: StudentListPage,
+        route: '/students',
+        label: 'Students',
+        isVisible: true,
+    },
+    {
+        component: StudentPage,
+        route: '/students/:studentId',
         isVisible: false,
     },
 ];

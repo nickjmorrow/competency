@@ -1,7 +1,9 @@
+import { createSelector } from 'reselect';
 import { CoursesState } from '~/courses/types/CoursesState';
 import { CoursePlan } from '~/courses/types/CoursePlan';
 import { Course } from '~/courses/types/Course';
 import { CoursePeriod } from '~/courses/types/CoursePeriod';
+import { Student } from '~/students';
 
 interface AppState {
     coursesState: CoursesState;
@@ -20,10 +22,14 @@ const getByCoursePeriodId = (coursePeriodId: number) => (state: AppState): Cours
 const getByCourseId = (courseId: number) => (state: AppState): Course =>
     state.coursesState.courses.find(c => c.courseId === courseId)!;
 
+const getCoursesWithStudent = (student: Student) => (state: AppState): Course[] =>
+    state.coursesState.courses.filter(c => c.studentIds.includes(student.studentId));
+
 export const coursesSelectors = {
     getCoursePlans,
     getByCoursePlanId,
     getCourses,
     getByCoursePeriodId,
     getByCourseId,
+    getCoursesWithStudent,
 };

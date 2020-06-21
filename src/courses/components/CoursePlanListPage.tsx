@@ -14,7 +14,7 @@ export const CoursePlanListPage: React.FC = () => {
             <Typography variant={'h2'}>Course Plans</Typography>
             <CoursePlansContainer>
                 {coursePlans.map(c => (
-                    <Link route={`course-plans/${c.coursePlanId}`}>
+                    <Link key={c.coursePlanId} route={`course-plans/${c.coursePlanId}`}>
                         <CoursePlanButtonBar key={c.coursePlanId} coursePlan={c} />
                     </Link>
                 ))}

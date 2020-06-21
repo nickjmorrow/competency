@@ -5,6 +5,7 @@ import { App } from '~/landing/App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { rootReducer } from '~/redux/rootReducer';
+import { ThemeProvider } from '~/theming/ThemeProvider';
 import { MemoryRouter } from 'react-router';
 
 let container = (null as unknown) as HTMLDivElement;
@@ -19,14 +20,16 @@ afterEach(() => {
     (container as unknown) = null;
 });
 
-it('renders with an error', () => {
+it('renders without an error', () => {
     act(() => {
         const store = createStore(rootReducer);
         render(
             <MemoryRouter>
-                <Provider store={store}>
-                    <App />
-                </Provider>
+                <ThemeProvider>
+                    <Provider store={store}>
+                        <App />
+                    </Provider>
+                </ThemeProvider>
             </MemoryRouter>,
             container,
         );

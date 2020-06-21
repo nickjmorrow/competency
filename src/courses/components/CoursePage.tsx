@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Collapse } from 'react-collapse';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { coursesSelectors } from '~/courses/state/coursesSelectors';
@@ -32,7 +31,7 @@ export const CoursePage: React.FC = () => {
             <Typography>{instructor.name}</Typography>
             <Typography variant={'h3'}>Students</Typography>
             {studentsInCourse.map(s => (
-                <StudentCard key={s.studentId} student={s} course={course} coursePlan={coursePlan} />
+                <StudentCard key={s.studentId} student={s} course={course} />
             ))}
 
             {coursePlan ? (
@@ -87,28 +86,14 @@ const ChooseCoursePlanButton: React.FC<{ onClick: () => void }> = ({ onClick: ha
     return <Button onClick={handleClick}>Choose Course Plan</Button>;
 };
 
-const StudentCard: React.FC<{ student: Student; course: Course; coursePlan?: CoursePlan }> = ({
-    student,
-    course,
-    coursePlan,
-}) => {
+const StudentCard: React.FC<{ student: Student; course: Course }> = ({ student, course }) => {
     return (
         <StudentCardContainer>
-            <Link route={`/courses/${course.courseId}/students/${student.studentId}`}>
-                <Typography
-                    style={{
-                        cursor: coursePlan ? 'pointer' : 'default',
-                        margin: '0 0 8px 0',
-                        display: 'block',
-                        width: 'max-content',
-                        color: 'inherit',
-                    }}
-                >
-                    {student.name}
-                </Typography>
-            </Link>
+            <Link route={`/courses/${course.courseId}/students/${student.studentId}`}>{student.name}</Link>
         </StudentCardContainer>
     );
 };
 
-const StudentCardContainer = styled.div``;
+const StudentCardContainer = styled.div`
+    margin-bottom: 8px;
+`;

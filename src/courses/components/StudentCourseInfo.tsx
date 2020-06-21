@@ -11,55 +11,57 @@ export const StudentCourseInfo: React.FC = () => {
     const { courseId, studentId } = useParams();
     console.log(courseId, studentId);
     const course = useSelector(coursesSelectors.getByCourseId(parseInt(courseId, 10)))!;
-    const coursePlan = useSelector(coursesSelectors.getByCoursePlanId(course.coursePlanId))!;
-    const projects = coursePlan.learningObjectives.map(lo => lo.projects).flat();
+    const coursePlan = useSelector(coursesSelectors.getByCoursePlanId(course.coursePlanId));
+    const projects = coursePlan?.learningObjectives.map(lo => lo.projects).flat() ?? [];
     const student = useSelector(studentsApi.selectors.getByStudentId(parseInt(studentId, 10)))!;
     return (
         <StudentCardContainer>
-            <Typography
-                style={{ cursor: coursePlan ? 'pointer' : 'default', margin: '0 0 8px 0', display: 'inline-block' }}
-                variant={'h2'}
-            >
-                {student.name} | <Link route={`/courses/${course.courseId}`}>{course.name}</Link>
+            <Typography variant={'h2'}>
+                <Link route={`/students/${student.studentId}`}>{student.name}</Link> |{' '}
+                <Link route={`/courses/${course.courseId}`}>{course.name}</Link>
             </Typography>
 
-            <Typography variant={'h3'}>Projects</Typography>
-            <table>
-                <thead>
-                    <tr>
-                        <Th>
-                            <Typography>Name</Typography>
-                        </Th>
-                        <Th>
-                            <Typography>Result</Typography>
-                        </Th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {projects.map(p => {
-                        const result = course.studentProjects.find(
-                            sp => sp.projectId === p.projectId && sp.studentId === student.studentId,
-                        )?.result;
-                        return (
-                            <tr key={p.projectId}>
-                                <Td>
-                                    <Typography>{p.title}</Typography>
-                                </Td>
-                                <Td>
-                                    <Typography>{result ?? 'Unsubmitted'}</Typography>
-                                </Td>
+            {projects.length ? (
+                <>
+                    <Typography variant={'h3'}>Projects</Typography>
+                    <table>
+                        <thead>
+                            <tr>
+                                <Th>
+                                    <Typography>Name</Typography>
+                                </Th>
+                                <Th>
+                                    <Typography>Result</Typography>
+                                </Th>
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {projects.map(p => {
+                                const result = course.studentProjects.find(
+                                    sp => sp.projectId === p.projectId && sp.studentId === student.studentId,
+                                )?.result;
+                                return (
+                                    <tr key={p.projectId}>
+                                        <Td>
+                                            <Typography>{p.title}</Typography>
+                                        </Td>
+                                        <Td>
+                                            <Typography>{result ?? 'Unsubmitted'}</Typography>
+                                        </Td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </>
+            ) : (
+                <Typography variant={'h3'}>No Projects Found</Typography>
+            )}
         </StudentCardContainer>
     );
 };
 
-const StudentCardContainer = styled.div`
-    padding: 6px 0;
-`;
+const StudentCardContainer = styled.div``;
 
 const Th = styled.th`
     text-align: left;

@@ -36,6 +36,7 @@ export const App: React.SFC = () => {
 const Body = styled.div`
     display: flex;
     flex: 1;
+    padding-top: 32px;
 `;
 
 const Main = styled.main`
