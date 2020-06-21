@@ -1,4 +1,4 @@
-<h1 align="center">Competency Based Education portal</h1>
+<h1 align="center">Competency Based Education Portal</h1>
 
 ## At a Glance
 
