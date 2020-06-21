@@ -10,11 +10,16 @@ export const Link: React.FC<{ route: string; children: React.ReactNode; classNam
 }) => {
     return (
         <StyledLink className={className} to={route}>
-            <Typography>{children}</Typography>
+            <StyledTypography>{children}</StyledTypography>
         </StyledLink>
     );
 };
 
 const StyledLink = styled(RouterLink)`
     text-decoration: none;
+`;
+
+const StyledTypography = styled(Typography)`
+    color: ${p => p.theme.colors.core.cs4};
+    font-size: inherit;
 `;

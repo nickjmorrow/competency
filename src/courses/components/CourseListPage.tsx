@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { coursesSelectors } from '~/courses/state/coursesSelectors';
-import { Course } from '~/courses/components/Course';
+import { CourseButtonBar } from '~/courses/components/CourseButtonBar';
 
 export const CourseListPage: React.FC = () => {
     const courses = useSelector(coursesSelectors.getCourses);
@@ -10,7 +10,7 @@ export const CourseListPage: React.FC = () => {
     return (
         <Container>
             {courses.map(c => (
-                <Course key={c.courseId} course={c} />
+                <CourseButtonBar key={c.courseId} course={c} />
             ))}
         </Container>
     );

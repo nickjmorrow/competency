@@ -8,7 +8,7 @@ export const CourseButtonBar: React.FC<{ course: Course }> = ({ course }) => {
     return (
         <Link route={`/courses/${course.courseId}`}>
             <Container>
-                <Typography>{course.name}</Typography>
+                <Name>{course.name}</Name>
             </Container>
         </Link>
     );
@@ -19,4 +19,8 @@ const Container = styled.div`
     width: 480px;
     padding: 16px;
     border-radius: ${p => p.theme.border.borderRadius.br1};
+`;
+
+const Name = styled(Typography)`
+    color: ${p => p.theme.colors.neutral.cs9};
 `;

@@ -1,19 +1,10 @@
+import { LearningObjective } from '~/courses/types/LearningObjective';
+import { Project } from '~/courses/types/Project';
+
 export interface Course {
     courseId: number;
     name: string;
     learningObjectives: LearningObjective[];
-}
-
-interface LearningObjective {
-    learningObjectiveId: number;
-    title: string;
-    description: string;
-    projects: Project[];
-}
-
-interface Project {
-    projectId: number;
-    description: string;
 }
 
 interface Student {
