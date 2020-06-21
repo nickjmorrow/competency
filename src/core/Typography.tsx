@@ -38,16 +38,24 @@ const getTag = (variant?: Variant) => {
     }
 };
 
-const getColor = (theme: Theme) => {
-    return theme.colors.core.cs9;
+type ColorVariant = 'inherit';
+
+const getColor = (theme: Theme, colorVariant?: ColorVariant) => {
+    switch (colorVariant) {
+        case 'inherit':
+            return 'inherit';
+        default:
+            return theme.colors.core.cs9;
+    }
 };
 
 interface TypographyProps {
     variant?: Variant;
+    colorVariant?: ColorVariant;
 }
 
 export const Typography = styled('span').attrs((p: TypographyProps) => ({ as: getTag(p.variant) }))<TypographyProps>`
     font-family: ${p => p.theme.typography.fontFamily.default};
     font-size: ${p => getFontSize(p.variant)};
-    color: ${p => getColor(p.theme)};
+    color: ${p => getColor(p.theme, p.colorVariant)};
 `;

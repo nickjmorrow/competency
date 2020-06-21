@@ -1,12 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Course } from '~/courses/types/Course';
+import { Link } from '~/core/Link';
+import { Typography } from '~/core/Typography';
+import { ButtonBar } from '~/courses/components/ButtonBar';
 import { useSelector } from 'react-redux';
 import { coursesSelectors } from '~/courses/state/coursesSelectors';
-import { CourseButtonBar } from '~/courses/components/CourseButtonBar';
 
 export const CourseListPage: React.FC = () => {
     const courses = useSelector(coursesSelectors.getCourses);
-
     return (
         <Container>
             {courses.map(c => (
@@ -16,8 +18,14 @@ export const CourseListPage: React.FC = () => {
     );
 };
 
-const Container = styled.div`
-    display: grid;
-    grid-auto-flow: row;
-    grid-row-gap: 24px;
-`;
+const Container = styled.div``;
+
+const CourseButtonBar: React.FC<{ course: Course }> = ({ course }) => {
+    return (
+        <Link route={`/courses/${course.courseId}`}>
+            <ButtonBar>
+                <Typography colorVariant={'inherit'}>{course.name}</Typography>
+            </ButtonBar>
+        </Link>
+    );
+};

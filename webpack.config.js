@@ -55,12 +55,10 @@ module.exports = {
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
-        liveReload: true,
         port: 3000,
         https: true,
         hot: true,
         historyApiFallback: true,
-        writeToDisk: true,
         stats: {
             colors: true,
             hash: false,
