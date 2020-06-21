@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Course as CourseType } from '~/courses/types/Course';
+import { Course } from '~/courses/types/Course';
 import { Typography } from '~/core/Typography';
 import { Link } from '~/core/Link';
 
-export const Course: React.FC<{ course: CourseType }> = ({ course }) => {
+export const CourseButtonBar: React.FC<{ course: Course }> = ({ course }) => {
     return (
         <Link route={`/courses/${course.courseId}`}>
             <Container>
