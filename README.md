@@ -1,25 +1,31 @@
-![Beginning](assets/beginning.jpg)
+<h1 align="center">Competency Based Education portal</h1>
 
-<h1 align="center">Webpack/Babel/TypeScript/React/ESLint</h1>
+## At a Glance
 
-A small starter kit for your JavaScript/React projects. It includes:
+This is a web application for use in a competency-based educational learning program for use by students, instructors, and administrators.
 
-* Webpack + webpack-dev-server (live-reload and watcher)
-* TypeScript
-* React + styled-components
-* ESLint/Prettier configured
+## Technical Stack
 
-## How to use it
+-   The **front-end** is built with React and Redux.
+-   As of right now, there is no backend. This is meant to be a demo focused on functionality and user flows.
 
-1. Create an empty folder and run `npx beginning && npm install`
-2. Run `npm run dev` and open http://localhost:9000
+## Getting Started
 
---- 
+To begin development, run:
 
-* To use just bundling and watching use `npm run watch`.
-* To generate a production ready bundle use `npm run build`.
+```bash
+npm install
+npm run dev
+```
 
-## Why you may need this
+To run tests:
 
-* You don't wanna deal with Webpack/Babel/TypeScript/React configuration.
-* You want the bare minimum setup to work with TypeScript and React.
+```bash
+npm run test
+```
+
+To lint:
+
+```bash
+npm run lint
+```
